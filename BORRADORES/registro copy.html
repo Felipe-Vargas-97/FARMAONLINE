@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro - Farmaonline</title>
+    <style>
+        body { font-family: sans-serif; max-width: 400px; margin: 20px auto; }
+        input { width: 100%; padding: 8px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; }
+        button { width: 106%; padding: 10px; background-color: #28a745; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>Crear Cuenta Farmaonline</h2>
+    <form action="Incluir/procesar_registro.php" method="POST">
+        <input type="text" name="nombres" placeholder="Nombres" required>
+        <input type="text" name="apellidos" placeholder="Apellidos" required>
+        <input type="text" name="cedula" placeholder="Cédula" required>
+        <input type="email" name="correo" placeholder="Correo Electrónico" required>
+        <input type="password" name="password" placeholder="Contraseña" required>
+        <input type="text" name="direccion" placeholder="Dirección de residencia">
+        <input type="tel" name="celular" placeholder="Número de Celular">
+        
+        <button type="submit">Registrar Usuario</button>
+    </form>
+</body>
+</html>

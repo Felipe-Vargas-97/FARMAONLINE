@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmaOnline - Login</title>
+    <style>
+        /* --- TODAS TUS VARIABLES ORIGINALES DEL PRIMER BLOQUE --- */
+        :root {
+            --gradient: linear-gradient(135deg, #1F6ED4, #27AE60);
+            --bg-body: var(--gradient);
+            --bg-card: linear-gradient(135deg, #1F6ED4, #27AE60);
+            --text-title: #ffffff;
+            --text-body: #636e72;
+            --accent: #28a745;
+            --input-border: #e6e9df;
+            --input-bg: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-mode {
+            /* Modo Oscuro (6PM - 5AM) */
+            --bg-body: linear-gradient(135deg, #1794cf, #46b983);
+            --bg-card: #1e1e1e;
+            --text-title: #ffffff;
+            --text-body: #b2bec3;
+            --accent: #2ecc71;
+            --input-border: #333333;
+            --input-bg: #2d2d2d;
+            --shadow: rgba(0, 0, 0, 0.4);
+        }
+
+        /* --- ESTILOS BASE --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-body) !important;
+            background-attachment: fixed !important;
+            background-size: cover;
+            color: var(--text-body);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            transition: all 0.5s ease;
+        }
+
+        .login-container {
+            background-color: var(--bg-card);
+            width: 100%;
+            max-width: 380px;
+            padding: 40px;
+            margin: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px var(--shadow);
+            text-align: center;
+        }
+
+        /* --- CARRUSEL DE IMÁGENES --- */
+        .image-slider {
+            height: 60px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-slider img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+            transition: opacity 0.6s ease;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            padding: 3px;
+        }
+
+        h2 {
+            color: var(--text-title);
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+        }
+
+        /* --- FORMULARIO --- */
+        form {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            gap: 12px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-title);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--input-border);
+            border-radius: 6px;
+            background-color: var(--input-bg);
+            color: #333;
+            font-size: 14px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 5px rgba(40, 167, 69, 0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        button:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }
+
+        #mensaje-error {
+            display: none;
+            color: #ff6b6b;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .link-registro {
+            margin-top: 20px;
+            font-size: 13px;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .link-registro a {
+            color: #ffffff;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: 25px;
+            font-size: 11px;
+            color: #ffffff;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+        <div class="image-slider">
+            <img id="logo-img" src="Imagenes/LOGO1.png" alt="Logo">
+        </div>
+
+        <h2>Acceso FarmaOnline</h2>
+
+        <div id="mensaje-error"></div>
+
+        <form action="INCLUIR/validar.php" method="POST">
+            <label>Correo Electrónico:</label>
+            <input type="email" name="correo" placeholder="ejemplo@correo.com" required>
+
+            <label>Contraseña:</label>
+            <input type="password" name="password" placeholder="••••••••" required>
+
+            <button type="submit">Ingresar</button>
+        </form>
+
+        <div class="link-registro">
+            ¿No tienes una cuenta? <a href="registro.html">Regístrate aquí</a>
+        </div>
+
+        <footer>
+            © 2026 FarmaOnline. Todos los derechos reservados.
+        </footer>
+    </div>
+
+    <script>
+        // Mensajes de error por parámetros URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+        const mensajeDiv = document.getElementById('mensaje-error');
+
+        if (error === '1') {
+            mensajeDiv.textContent = "La contraseña es incorrecta.";
+            mensajeDiv.style.display = "block";
+        } else if (error === '2') {
+            mensajeDiv.textContent = "El correo electrónico no está registrado.";
+            mensajeDiv.style.display = "block";
+        }
+
+        // Modo Oscuro (6PM a 5AM)
+        function checkTheme() {
+            const hour = new Date().getHours();
+            if (hour >= 18 || hour < 5) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        }
+
+        // Slider de imágenes
+        const imgElement = document.getElementById('logo-img');
+        const images = [
+            "Imagenes/LOGO1.png",
+            "Imagenes/LOGO2.jpeg"
+        ];
+        let currentIdx = 0;
+
+        function changeImage() {
+            imgElement.style.opacity = '0';
+            setTimeout(() => {
+                currentIdx = (currentIdx + 1) % images.length;
+                imgElement.src = images[currentIdx];
+                imgElement.style.opacity = '1';
+            }, 600);
+        }
+
+        checkTheme();
+        setInterval(changeImage, 3000);
+        setInterval(checkTheme, 60000);
+    </script>
+</body>
+
+</html>

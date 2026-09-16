@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Farmaonline</title>
+    <style>
+        /* --- VARIABLES DE COLOR DEL CUADRO DE INICIO --- */
+        :root {
+            --gradient: linear-gradient(135deg, #1F6ED4, #27AE60);
+            --bg-body: var(--gradient);
+            --bg-card: linear-gradient(135deg, #1F6ED4, #27AE60);
+            --text-title: #ffffff;
+            --text-body: #ffffff;
+            --accent: #28a745;
+            --input-border: #e6e9df;
+            --input-bg: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-mode {
+            /* Modo Oscuro (6PM - 5AM) */
+            --bg-body: linear-gradient(135deg, #1794cf, #46b983);
+            --bg-card: #1e1e1e;
+            --text-title: #ffffff;
+            --text-body: #b2bec3;
+            --accent: #2ecc71;
+            --input-border: #333333;
+            --input-bg: #2d2d2d;
+            --shadow: rgba(0, 0, 0, 0.4);
+        }
+
+        /* --- ESTILOS BASE --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-body) !important;
+            background-attachment: fixed !important;
+            background-size: cover;
+            color: var(--text-body);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            transition: all 0.5s ease;
+        }
+
+        .container {
+            background-color: var(--bg-card);
+            width: 100%;
+            max-width: 420px;
+            padding: 30px;
+            margin: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px var(--shadow);
+            text-align: center;
+        }
+
+        /* --- CARRUSEL DE IMÁGENES --- */
+        .image-slider {
+            height: 60px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-slider img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+            transition: opacity 0.6s ease;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            padding: 3px;
+        }
+
+        h2 {
+            color: var(--text-title);
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+        }
+
+        /* --- FORMULARIO --- */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--input-border);
+            border-radius: 6px;
+            background-color: var(--input-bg);
+            color: #333;
+            font-size: 14px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 5px rgba(40, 167, 69, 0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        button:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }
+
+        .link-login {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #ffffff;
+        }
+
+        .link-login a {
+            color: #ffffff;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: 25px;
+            font-size: 12px;
+            color: var(--text-body);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="image-slider">
+            <img id="farma-logo" src="Imagenes/LOGO1.png" alt="Logo FarmaOnline">
+        </div>
+
+        <h2>Crear Cuenta FarmaOnline</h2>
+
+        <form action="INCLUIR/procesar_registro.php" method="POST">
+            <input type="text" name="nombres" placeholder="Nombres" required>
+            <input type="text" name="apellidos" placeholder="Apellidos" required>
+            <input type="text" name="cedula" placeholder="Cédula" required>
+            <input type="email" name="correo" placeholder="Correo Electrónico" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <input type="text" name="direccion" placeholder="Dirección de residencia">
+            <input type="tel" name="celular" placeholder="Número de Celular">
+
+            <button type="submit">Registrar Usuario</button>
+        </form>
+
+        <div class="link-login">
+            ¿Ya tienes cuenta? <a href="INICIO.php">Inicia sesión aquí</a>
+        </div>
+
+        <footer>
+            © 2026 FarmaOnline. Todos los derechos reservados.
+        </footer>
+    </div>
+
+    <script>
+        /**
+         * LÓGICA MODO OSCURO (6PM a 5AM)
+         */
+        function updateTheme() {
+            const now = new Date();
+            const hour = now.getHours();
+            if (hour >= 18 || hour < 5) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        }
+
+        /**
+         * LÓGICA CAMBIO DE IMÁGENES
+         */
+        const imgElement = document.getElementById('farma-logo');
+        const images = [
+            "Imagenes/LOGO1.png",
+            "Imagenes/LOGO2.jpeg"
+        ];
+        let currentIdx = 0;
+
+        function changeImage() {
+            imgElement.style.opacity = '0';
+            setTimeout(() => {
+                currentIdx = (currentIdx + 1) % images.length;
+                imgElement.src = images[currentIdx];
+                imgElement.style.opacity = '1';
+            }, 600);
+        }
+
+        updateTheme();
+        setInterval(changeImage, 3000);
+        setInterval(updateTheme, 60000);
+    </script>
+</body>
+
+</html>

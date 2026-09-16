@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="FarmaOnline - Sistema de gestión de farmacia en línea. Medicamentos, vitaminas y productos de salud.">
+  <title>FarmaOnline - Sistema de gestión de farmacia en línea</title>
+
+  <style>
+    /* ====== CONFIGURACIÓN DE COLORES Y ESTILOS ====== */
+    :root {
+      --primary: #00a884;
+      /* Verde Salud */
+      --secondary: #05445e;
+      /* Azul Confianza */
+      --accent: #189ab4;
+      /* Azul Informativo */
+      --bg-light: #f4f7f6;
+      /* Gris suave de fondo */
+      --white: #ffffff;
+      --text-dark: #333333;
+      --text-muted: #666666;
+      --sale-red: #e74c3c;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ====== TOP BAR ====== */
+    .top-bar {
+      background: var(--secondary);
+      color: white;
+      padding: 10px 0;
+      font-size: 0.85rem;
+    }
+
+    .top-bar .container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .top-bar-item {
+      margin-right: 15px;
+    }
+
+    /* ====== HEADER / NAV ====== */
+    .main-nav {
+      background: var(--white);
+      padding: 15px 0 0 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 15px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-text h1 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin: 0;
+      line-height: 1;
+    }
+
+    .logo-text p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .search-bar {
+      flex: 1;
+      max-width: 500px;
+      margin: 0 30px;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 12px 20px 12px 45px;
+      border: 1px solid #ddd;
+      border-radius: 30px;
+      outline: none;
+      background: #f9f9f9;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 18px;
+      color: #999;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 15px;
+    }
+
+    .icon-btn {
+      background: #f0f2f5;
+      border: none;
+      font-size: 1.3rem;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .icon-btn:hover {
+      background: #e2e6ea;
+    }
+
+    .cart-badge {
+      background: var(--sale-red);
+      color: white;
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 10px;
+      position: absolute;
+      top: -5px;
+      right: -5px;
+    }
+
+    .nav-links {
+      background: #fff;
+      border-top: 1px solid #eee;
+    }
+
+    .nav-links ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 15px 0;
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: 0.3s;
+      border-bottom: 3px solid transparent;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+      border-bottom: 3px solid var(--primary);
+    }
+
+    /* ====== HERO SECTION ====== */
+    .hero {
+      background: linear-gradient(rgba(5, 68, 94, 0.7), rgba(5, 68, 94, 0.7)),
+        url('Imagenes/doctora.jpg');
+
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .hero-badge {
+      background: var(--primary);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin: 25px 0;
+      font-weight: 800;
+    }
+
+    .hero .accent {
+      color: #52ffd7;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      opacity: 0.9;
+    }
+
+    /* ====== BENEFITS ====== */
+    .benefits {
+      padding: 40px 0;
+      background: white;
+      border-bottom: 1px solid #eee;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .benefit-card {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .benefit-icon {
+      font-size: 2.2rem;
+      background: #e6f7f3;
+      padding: 10px;
+      border-radius: 12px;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.1rem;
+      color: var(--secondary);
+    }
+
+    .benefit-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* ====== PRODUCT CARDS ====== */
+    .products-section {
+      padding: 80px 0;
+    }
+
+    .products-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 40px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: 0.3s;
+      border: 1px solid #eee;
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-img {
+      height: 220px;
+      background: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      padding: 4px 12px;
+      border-radius: 5px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    .sale {
+      background: var(--sale-red);
+    }
+
+    .popular {
+      background: var(--accent);
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .meta {
+      font-size: 0.8rem;
+      color: var(--primary);
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .product-info h3 {
+      font-size: 1.1rem;
+      margin: 10px 0;
+      color: var(--secondary);
+    }
+
+    .product-price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+    }
+
+    .product-price {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--secondary);
+    }
+
+    .original {
+      text-decoration: line-through;
+      color: #bbb;
+      font-size: 0.9rem;
+      margin-left: 5px;
+    }
+
+    .btn-cart {
+      background: var(--primary);
+      border: none;
+      color: white;
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-cart:hover {
+      background: var(--secondary);
+    }
+
+    /* ====== CONTACT FORM ====== */
+    .contact-page {
+      padding: 80px 0;
+      background: #fff;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 50px;
+    }
+
+    .contact-card {
+      background: #f8f9fa;
+      padding: 30px;
+      border-radius: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    .btn-submit {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 15px;
+      width: 100%;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* ====== FOOTER ====== */
+    .footer {
+      background: var(--secondary);
+      color: white;
+      padding: 80px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 40px;
+    }
+
+    .footer h4 {
+      margin-bottom: 25px;
+      font-size: 1.2rem;
+      border-left: 4px solid var(--primary);
+      padding-left: 10px;
+    }
+
+    .footer ul {
+      list-style: none;
+    }
+
+    .footer ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer a {
+      color: #ccc;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .footer a:hover {
+      color: var(--primary);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #888;
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+
+      .contact-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .search-bar {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left">
+        <span class="top-bar-item">📞 +57 300 123 4567</span>
+        <span class="top-bar-item">🕐 Lun - Dom: 7:00 AM - 9:00 PM</span>
+      </div>
+      <div class="top-bar-right">
+        <span class="top-bar-item">📍 Calle 10 #15-30, Centro</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="main-nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="logo">
+          <div class="logo-text">
+            <h1>FarmaOnline</h1>
+            <p>Salud a un clic de distancia</p>
+          </div>
+        </a>
+
+        <div class="search-bar">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="¿Qué medicamento buscas hoy?">
+        </div>
+
+        <div class="nav-actions">
+          <button class="icon-btn">👤</button>
+          <button class="icon-btn" style="position:relative">
+            🛒 <span class="cart-badge">3</span>
+          </button>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <div class="container">
+          <ul>
+            <li><a href="#" class="active">Inicio</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#categorias">Categorías</a></li>
+            <li><a href="#ofertas">Ofertas</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <span class="hero-badge">🏥 Tu bienestar es nuestra prioridad</span>
+      <h1>Cuidamos tu <span class="accent">salud</span> con amor</h1>
+      <p>Encuentra el catálogo más completo de medicamentos, vitaminas y cuidado personal con entrega inmediata.</p>
+      <div style="margin-top:30px">
+        <button
+          style="background:var(--primary); color:white; border:none; padding:15px 40px; border-radius:30px; font-weight:bold; cursor:pointer; font-size:1rem">Comprar
+          Ahora</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="benefits">
+    <div class="container">
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🚚</div>
+          <div>
+            <h3>Envío Express</h3>
+            <p>En menos de 2 horas</p>
+          </div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🛡️</div>
+          <div>
+            <h3>Calidad MK</h3>
+            <p>Productos certificados</p>
+          </div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🎧</div>
+          <div>
+            <h3>Asesoría 24/7</h3>
+            <p>Habla con un farmacéutico</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="products-section" id="productos">
+    <div class="container">
+      <div class="products-header">
+        <div>
+          <h2 style="font-size: 2rem; color: var(--secondary);">Productos Destacados</h2>
+          <p style="color: var(--text-muted);">Los más vendidos de la semana</p>
+        </div>
+        <button
+          style="background:none; border: 1px solid var(--primary); color: var(--primary); padding:10px 20px; border-radius:5px; cursor:pointer">Ver
+          todos</button>
+      </div>
+
+      <div class="products-grid">
+        <article class="product-card">
+          <div class="product-img">💊 <span class="product-badge sale">Oferta -20%</span></div>
+          <div class="product-info">
+            <p class="meta">MK · Analgésico</p>
+            <h3>Acetaminofén 500mg</h3>
+            <div class="product-price-row">
+              <span class="product-price">$8.500 <span class="original">$12.000</span></span>
+              <button class="btn-cart">🛒</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img">🧴 <span class="product-badge popular">Más buscado</span></div>
+          <div class="product-info">
+            <p class="meta">CeraVe · Dermatológico</p>
+            <h3>Crema Hidratante 454g</h3>
+            <div class="product-price-row">
+              <span class="product-price">$52.000</span>
+              <button class="btn-cart">🛒</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img">🍊</div>
+          <div class="product-info">
+            <p class="meta">GNC · Vitaminas</p>
+            <h3>Vitamina C 1000mg</h3>
+            <div class="product-price-row">
+              <span class="product-price">$25.000</span>
+              <button class="btn-cart">🛒</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img">🩹 <span class="product-badge sale">Nuevo</span></div>
+          <div class="product-info">
+            <p class="meta">Genfar · Antiinflamatorio</p>
+            <h3>Ibuprofeno 400mg</h3>
+            <div class="product-price-row">
+              <span class="product-price">$6.200</span>
+              <button class="btn-cart">🛒</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-page" id="contacto">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h2 style="color:var(--secondary); margin-bottom:20px">Contáctanos</h2>
+          <p style="margin-bottom:20px">Estamos listos para atender tus dudas sobre medicamentos o pedidos.</p>
+          <p><strong>📍 Sede Principal:</strong> Calle 10 #15-30, Centro</p>
+          <p><strong>📧 Email:</strong> ayuda@farmaonline.com</p>
+          <p><strong>📞 Teléfono:</strong> (601) 123 4567</p>
+        </div>
+        <div class="contact-card" style="background:white; border:1px solid #eee">
+          <form>
+            <div class="form-group">
+              <label>Nombre Completo</label>
+              <input type="text" placeholder="Ej. Juan Pérez">
+            </div>
+            <div class="form-group">
+              <label>Correo Electrónico</label>
+              <input type="email" placeholder="juan@correo.com">
+            </div>
+            <div class="form-group">
+              <label>Mensaje</label>
+              <textarea rows="4" placeholder="Escribe tu consulta aquí..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Enviar Mensaje</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>FarmaOnline</h4>
+          <p>La farmacia digital más grande de la región. Salud y bienestar a un solo clic de distancia.</p>
+        </div>
+        <div>
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Productos</a></li>
+            <li><a href="#">Categorías</a></li>
+            <li><a href="#">Ofertas</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Términos y condiciones</a></li>
+            <li><a href="#">Política de privacidad</a></li>
+            <li><a href="#">Devoluciones</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Síguenos</h4>
+          <div style="font-size:1.5rem">
+            <span>🔵</span> <span>📸</span> <span>🐦</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 FarmaOnline. Todos los derechos reservados. Diseñado para tu salud.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

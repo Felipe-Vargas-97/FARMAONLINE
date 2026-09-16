@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FarmaOnline - Sistema de gestión de farmacia en línea. Medicamentos, vitaminas y productos de salud.">
+  <title>FarmaOnline - Sistema de gestión de farmacia en línea</title>
+  
+  <link rel="stylesheet" href="farmacia-styles.css">
+</head>
+
+
+<body>
+
+  <!-- ====== TOP BAR ====== -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left">
+        <span class="top-bar-item">📞 +57 300 123 4567</span>
+        <span class="top-bar-item">🕐 Lun - Dom: 7:00 AM - 9:00 PM</span>
+      </div>
+      <div class="top-bar-right">
+        <span class="top-bar-item">📍 Calle 10 #15-30, Centro</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== HEADER / NAV ====== -->
+  <header class="main-nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="logo">
+          <img src="logo_farmaonline.png" alt="FarmaOnline logo">
+          <div class="logo-text">
+            <h1>FarmaOnline</h1>
+            <p>Sistema de gestión de farmacia en línea</p>
+          </div>
+        </a>
+
+        <div class="search-bar">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Buscar medicamentos, productos de salud..." aria-label="Buscar productos">
+        </div>
+
+        <div class="nav-actions">
+          <button class="icon-btn" aria-label="Mi cuenta">👤</button>
+          <button class="icon-btn" style="position:relative" aria-label="Carrito de compras">
+            🛒
+            <span class="cart-badge">3</span>
+          </button>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <div class="container">
+          <ul>
+            <li><a href="#" class="active">Inicio</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#categorias">Categorías</a></li>
+            <li><a href="#ofertas">Ofertas</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ====== HERO ====== -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-badge">🏥 Tu farmacia de confianza</span>
+        <h1>Cuidamos tu <span class="accent">salud</span> con dedicación</h1>
+        <p>Encuentra medicamentos, productos de cuidado personal y todo lo que necesitas para el bienestar de tu familia.</p>
+        <div class="hero-search">
+          <input type="text" placeholder="¿Qué medicamento necesitas?" aria-label="Buscar medicamentos">
+          <button>Buscar</button>
+        </div>
+        <div class="hero-tags">
+          <span>Popular:</span>
+          <a href="#">Acetaminofén</a>
+          <a href="#">Ibuprofeno</a>
+          <a href="#">Vitamina C</a>
+          <a href="#">Antigripal</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== BENEFITS ====== -->
+  <section class="benefits">
+    <div class="container">
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🚚</div>
+          <div>
+            <h3>Envío Rápido</h3>
+            <p>Entrega el mismo día en tu ciudad</p>
+          </div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🛡️</div>
+          <div>
+            <h3>Productos Certificados</h3>
+            <p>Garantía de calidad y autenticidad</p>
+          </div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🕐</div>
+          <div>
+            <h3>Atención 24/7</h3>
+            <p>Servicio de urgencias disponible</p>
+          </div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🎧</div>
+          <div>
+            <h3>Asesoría Farmacéutica</h3>
+            <p>Consulta con nuestros profesionales</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CATEGORIES ====== -->
+  <section class="categories" id="categorias">
+    <div class="container">
+      <div class="section-header">
+        <h2>Categorías de Productos</h2>
+        <p>Explora nuestra amplia variedad de productos organizados para ti</p>
+      </div>
+      <div class="categories-grid">
+        <a href="#" class="category-card">
+          <div class="category-icon blue">💊</div>
+          <h3>Medicamentos</h3>
+          <p>Recetados y de venta libre</p>
+        </a>
+        <a href="#" class="category-card">
+          <div class="category-icon green">❤️</div>
+          <h3>Cuidado Personal</h3>
+          <p>Higiene y belleza</p>
+        </a>
+        <a href="#" class="category-card">
+          <div class="category-icon amber">✨</div>
+          <h3>Vitaminas</h3>
+          <p>Suplementos y minerales</p>
+        </a>
+        <a href="#" class="category-card">
+          <div class="category-icon pink">👶</div>
+          <h3>Bebé y Mamá</h3>
+          <p>Todo para los más pequeños</p>
+        </a>
+        <a href="#" class="category-card">
+          <div class="category-icon indigo">🩺</div>
+          <h3>Equipos Médicos</h3>
+          <p>Tensiómetros, glucómetros</p>
+        </a>
+        <a href="#" class="category-card">
+          <div class="category-icon lime">🍎</div>
+          <h3>Nutrición</h3>
+          <p>Alimentos saludables</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FEATURED PRODUCTS ====== -->
+  <section class="products-section" id="productos">
+    <div class="container">
+      <div class="products-header">
+        <div>
+          <h2>Productos Destacados</h2>
+          <p>Los productos más buscados por nuestros clientes</p>
+        </div>
+        <button class="btn-outline">Ver todos</button>
+      </div>
+      <div class="products-grid">
+
+        <article class="product-card">
+          <div class="product-img">
+            <div class="emoji">💊</div>
+            <span class="product-badge sale">Oferta</span>
+          </div>
+          <div class="product-info">
+            <p class="meta">MK · Analgésico</p>
+            <h3>Acetaminofén 500mg</h3>
+            <div class="product-rating"><span class="star">★</span> <span>4.8</span></div>
+            <div class="product-price-row">
+              <span class="product-price">$8.500 <span class="original">$12.000</span></span>
+              <button class="btn-cart" aria-label="Agregar al carrito">🛒</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img">
+            <div class="emoji">💊</div>
+            <span class="product-badge popular">Popular</span>
+          </div>
+          <div class="product-info">
+            <p class="meta">GNC · Vitaminas</p>
+            <h3>Vitamina C 1000mg</h3>
+            <div class="product-rating"><span class="star">★</span> <span>4.9</span></div>
+            <div class="product-price-row">
+              <span class="product-price">$25.000</span>
+              <button class="btn-cart" aria-label="Agregar al carrito">🛒</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img">
+            <div class="emoji">💊</div>
+            <span class="product-badge sale">Oferta</span>
+          </div>
+          <div class="product-info">
+            <p class="meta">Genfar · Antiinflamatorio</p>
+            <h3>Ibuprofeno 400mg</h3>
+            <div class="product-rating"><span class="star">★</span> <span>4.7</span></div>
+            <div class="product-price-row">
+              <span class="product-price">$6.200 <span class="original">$9.000</span></span>
+              <button class="btn-cart" aria-label="Agregar al carrito">🛒</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img">
+            <div class="emoji">💊</div>
+          </div>
+          <div class="product-info">
+            <p class="meta">La Roche · Cuidado Personal</p>
+            <h3>Protector Solar SPF50</h3>
+            <div class="product-rating"><span class="star">★</span> <span>4.9</span></div>
+            <div class="product-price-row">
+              <span class="product-price">$45.000</span>
+              <button class="btn-cart" aria-label="Agregar al carrito">🛒</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img">
+            <div class="emoji">💊</div>
+            <span class="product-badge sale">Oferta</span>
+          </div>
+          <div class="product-info">
+            <p class="meta">Centrum · Vitaminas</p>
+            <h3>Multivitamínico Adulto</h3>
+            <div class="product-rating"><span class="star">★</span> <span>4.6</span></div>
+            <div class="product-price-row">
+              <span class="product-price">$38.000 <span class="original">$42.000</span></span>
+              <button class="btn-cart" aria-label="Agregar al carrito">🛒</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img">
+            <div class="emoji">💊</div>
+          </div>
+          <div class="product-info">
+            <p class="meta">MK · Antialérgico</p>
+            <h3>Loratadina 10mg</h3>
+            <div class="product-rating"><span class="star">★</span> <span>4.5</span></div>
+            <div class="product-price-row">
+              <span class="product-price">$5.800</span>
+              <button class="btn-cart" aria-label="Agregar al carrito">🛒</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img">
+            <div class="emoji">💊</div>
+            <span class="product-badge popular">Popular</span>
+          </div>
+          <div class="product-info">
+            <p class="meta">CeraVe · Cuidado Personal</p>
+            <h3>Crema Hidratante</h3>
+            <div class="product-rating"><span class="star">★</span> <span>4.8</span></div>
+            <div class="product-price-row">
+              <span class="product-price">$52.000 <span class="original">$58.000</span></span>
+              <button class="btn-cart" aria-label="Agregar al carrito">🛒</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img">
+            <div class="emoji">💊</div>
+          </div>
+          <div class="product-info">
+            <p class="meta">La Santé · Digestivo</p>
+            <h3>Omeprazol 20mg</h3>
+            <div class="product-rating"><span class="star">★</span> <span>4.7</span></div>
+            <div class="product-price-row">
+              <span class="product-price">$12.500</span>
+              <button class="btn-cart" aria-label="Agregar al carrito">🛒</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PROMO BANNER ====== -->
+  <section class="promo" id="ofertas">
+    <div class="container">
+      <div class="promo-inner">
+        <div>
+          <span class="badge">🎉 Oferta Especial</span>
+          <h2>20% de descuento</h2>
+          <p>En vitaminas y suplementos. ¡Solo esta semana!</p>
+        </div>
+        <button class="btn-promo">Ver Ofertas</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CONTACT SECTION ====== -->
+  <section class="contact-page" id="contacto">
+    <div class="container">
+      <div class="section-header">
+        <h2>Contáctanos</h2>
+        <p>Estamos aquí para ayudarte. No dudes en comunicarte con nosotros.</p>
+      </div>
+      <div class="contact-grid">
+        <!-- Contact Info -->
+        <div>
+          <div class="contact-card" style="margin-bottom: 1.5rem;">
+            <h2>Información de Contacto</h2>
+            <div class="contact-items">
+              <div class="contact-item">
+                <div class="info-icon">📍</div>
+                <div><p style="font-weight:500;color:var(--fg)">Dirección</p><p>Calle 10 #15-30, Centro, Ciudad</p></div>
+              </div>
+              <div class="contact-item">
+                <div class="info-icon">📞</div>
+                <div><p style="font-weight:500;color:var(--fg)">Teléfono</p><p>+57 300 123 4567</p></div>
+              </div>
+              <div class="contact-item">
+                <div class="info-icon">✉️</div>
+                <div><p style="font-weight:500;color:var(--fg)">Email</p><p>info@farmaonline.com</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="contact-card">
+            <h2>Horarios de Atención</h2>
+            <div class="schedule-row"><span class="day">Lunes - Viernes</span><span class="hours">7:00 AM - 9:00 PM</span></div>
+            <div class="schedule-row"><span class="day">Sábado</span><span class="hours">8:00 AM - 8:00 PM</span></div>
+            <div class="schedule-row"><span class="day">Domingo</span><span class="hours">8:00 AM - 2:00 PM</span></div>
+            <div class="schedule-row"><span class="day">Festivos</span><span class="hours">9:00 AM - 1:00 PM</span></div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-card">
+          <h2>Envíanos un Mensaje</h2>
+          <form>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" placeholder="Tu nombre">
+              </div>
+              <div class="form-group">
+                <label for="phone">Teléfono</label>
+                <input type="tel" id="phone" placeholder="Tu teléfono">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="tu@email.com">
+            </div>
+            <div class="form-group">
+              <label for="subject">Asunto</label>
+              <input type="text" id="subject" placeholder="Asunto del mensaje">
+            </div>
+            <div class="form-group">
+              <label for="message">Mensaje</label>
+              <textarea id="message" rows="4" placeholder="¿En qué podemos ayudarte?"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">✉️ Enviar Mensaje</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo-footer">
+            <img src="logo.png" alt="FarmaOnline logo">
+            <h3>FarmaOnline</h3>
+          </div>
+          <p>Tu farmacia de confianza. Sistema de gestión de farmacia en línea con productos de calidad y los mejores precios.</p>
+          <div class="social" style="margin-top:1rem">
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="WhatsApp">💬</a>
+          </div>
+        </div>
+        <div>
+          <h4>Enlaces Rápidos</h4>
+          <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#categorias">Categorías</a></li>
+            <li><a href="#ofertas">Ofertas</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Categorías</h4>
+          <ul>
+            <li><a href="#">Medicamentos</a></li>
+            <li><a href="#">Cuidado Personal</a></li>
+            <li><a href="#">Vitaminas y Suplementos</a></li>
+            <li><a href="#">Bebé y Mamá</a></li>
+            <li><a href="#">Equipos Médicos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <div class="contact-items">
+            <div class="contact-item"><span>📍</span><span>Calle 10 #15-30, Centro, Ciudad</span></div>
+            <div class="contact-item"><span>📞</span><span>+57 300 123 4567</span></div>
+            <div class="contact-item"><span>✉️</span><span>info@farmaonline.com</span></div>
+            <div class="contact-item"><span>🕐</span><div><p>Lun - Sáb: 7:00 AM - 9:00 PM</p><p>Dom: 8:00 AM - 2:00 PM</p></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 FarmaOnline. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+<footer class="footer">
+    ...
+  </footer>
+
+  <!-- VINCULAR EL ARCHIVO JS DESDE SU CARPETA -->
+  <script src="JS/carrito.js"></script>
+</body>
+</html>
+</body>
+</html>
