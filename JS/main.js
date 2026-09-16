@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Buscar todos los botones de añadir/comprar en la página
     const botones = document.querySelectorAll('button, .btn, .btn-agregar, .btn-comprar');
 
     botones.forEach(boton => {
@@ -28,8 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 carrito.push(productoNuevo);
             }
 
+            // Guarda en la memoria en segundo plano de forma silenciosa
             localStorage.setItem('carritoFarmaOnline', JSON.stringify(carrito));
-            alert(`¡Agregado al carrito: ${productoNuevo.nombre}!`);
         });
     });
 });
